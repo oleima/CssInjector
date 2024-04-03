@@ -2,11 +2,11 @@
     "name": "Agresso Css Injector",
     "description": "CSS Injector for annoying Agresso table which is too short for most computers and has too low width value on 'Beskrivelse' field",
     "version": "0.0.0.1",
-    "manifest_version": 1,
+    "manifest_version": 3,
     "content_scripts": [
         {
             "matches": [
-                "https://*connect.goodapp.no/ubwprod/*"
+                "https://*.goodapp.no/ubwprod/*"
             ],
             "js": [
                 "app.js"
