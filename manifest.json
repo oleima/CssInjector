@@ -12,5 +12,10 @@
                 "app.js"
             ]
         }
-    ]
+    ],
+    "author": "Ole Martin Gjerde",
+    "action": {
+        "default_popup": "index.html",
+        "default_title": "CSS injector for Agresso"
+    }
 }
