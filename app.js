@@ -1,9 +1,74 @@
 // Get The URL
 const site = window.location.hostname;
+let columnWidth = getColumnWidth();
+
+function getColumnWidth(){
+  let cookiedValue = getCookie("columnWidth")
+  let columnWidth = 150;
+  if(cookiedValue !== ""){
+    columnWidth = Number(cookiedValue)
+    console.log("found cookie with this width: " + columnWidth)
+  }
+  else{
+    setCookie("columnWidth", columnWidth, 14)
+    console.log("did not find cookie, setting this width: " + columnWidth)
+
+  }
+  return columnWidth;
+}
+
+
+function setCookie(cname, cvalue, exdays) {
+    const d = new Date();
+    d.setTime(d.getTime() + (exdays*24*60*60*1000));
+    let expires = "expires="+ d.toUTCString();
+    document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+  }
+
+  function getCookie(cname) {
+    let name = cname + "=";
+    let decodedCookie = decodeURIComponent(document.cookie);
+    let ca = decodedCookie.split(';');
+    for(let i = 0; i <ca.length; i++) {
+      let c = ca[i];
+      while (c.charAt(0) == ' ') {
+        c = c.substring(1);
+      }
+      if (c.indexOf(name) == 0) {
+        return c.substring(name.length, c.length);
+      }
+    }
+    return "";
+  }
+
+  function recievedWidth(width) {
+    console.log("recieved width " + width)
+    widthValue = width.split("=")[1];
+    setCookie("columnWidth", widthValue, 14)
+  }
+
+  chrome.runtime.onMessage.addListener(
+    function(request, sender, sendResponse) {
+      console.log(sender.tab ?
+                  "from a content script:" + sender.tab.url :
+                  "from the extension");
+      if (request.greeting === "hello")
+        sendResponse({farewell: "goodbye"});
+      
+      if (request.greeting === "getWidth"){
+        
+        sendResponse({width: columnWidth});
+      }
+      if (request.greeting.startsWith('setWidth')){
+        recievedWidth(request.greeting);
+        sendResponse({width: "set"});
+      }
+    }
+  );
 
 // Running every interval
 setInterval(function(){
-  
+
   var loaded = false;
   var elementList = document.getElementsByClassName("x-component u4-iframecontainer x-box-item x-component-default");
 
@@ -30,8 +95,9 @@ setInterval(function(){
             beskrivelse = beskrivelser[i]
           }
         }
-      
-        beskrivelse.setAttribute("style", "white-space:nowrap;text-align:center;vertical-align:middle;cursor:pointer;width:150px;"); 
+        columnWidth = getColumnWidth();
+        const columnStyle = "white-space:nowrap;text-align:center;vertical-align:middle;cursor:pointer;width:"+columnWidth+"px;"
+        beskrivelse.setAttribute("style", columnStyle); 
       }
     }
   }

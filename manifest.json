@@ -3,6 +3,13 @@
     "description": "CSS Injector for annoying Agresso table which is too short for most computers and has too low width value on 'Beskrivelse' field",
     "version": "0.0.0.1",
     "manifest_version": 3,
+    "permissions": [
+        "cookies",
+        "tabs",
+        "scripting",
+        "activeTab",
+        "tabGroups"
+      ],
     "content_scripts": [
         {
             "matches": [
@@ -17,5 +24,7 @@
     "action": {
         "default_popup": "index.html",
         "default_title": "CSS injector for Agresso"
-    }
+    },
+    
+  "host_permissions": ["https://*.goodapp.no/ubwprod/*"]
 }
