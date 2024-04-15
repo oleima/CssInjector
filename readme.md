@@ -10,19 +10,40 @@ By clicking on the extension next to the addressbar, you can manually adjust the
 
 ## Start using this extension:
 
+### For Chrome:
+
 To host this in your chromium browser clone the repo, or download and extract it as zip.
+Either way make sure you have the folder CssInjector with all its contents in a suitable path on your machine.
 
 Then enter your favorite browser and go to manage extensions. For chrome this looks like:
 
-![Click on the puzzle next to addressbar, and hit 'Manage extensions'](/images/manext.png)
+![Click on the puzzle next to addressbar, and hit 'Manage extensions'](/images/chrome_manext.png)
 
 When on the extensions, turn on Developer mode, i.e:
 
-![Click the developer mode toggle](/images/devmode.png)
+![Click the developer mode toggle](/images/chrome_devmode.png)
 
 Then click Load Unpacked and upload the folder that you downloaded.
 
-![alt text](/images/loadFolder.png)
+![Load the folder from your path](/images/chrome_loadFolder.png)
+
+Then you can start using the extension and it will automatically increase the table and column size for you.
+
+### For Edge:
+
+To host this in your chromium browser clone the repo, or download and extract it as zip.
+Either way make sure you have the folder CssInjector with all its contents in a suitable path on your machine.
+
+Then enter your favorite browser and go to manage extensions. For chrome this looks like:
+
+![Click on the puzzle next to addressbar, and hit 'Manage extensions'](/images/edge_manext.png)
+
+When on the extensions, turn on Developer mode, i.e:
+![Click the developer mode toggle](/images/edge_devmode.png)
+
+Then click Load Unpacked and upload the folder that you downloaded.
+
+![Load the folder from your path](/images/edge_loadFolder.png)
 
 Then you can start using the extension and it will automatically increase the table and column size for you.
 
