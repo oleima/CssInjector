@@ -35,7 +35,9 @@ function setCookie(cname, cvalue, exdays) {
         c = c.substring(1);
       }
       if (c.indexOf(name) == 0) {
-        return c.substring(name.length, c.length);
+        let cvalue = c.substring(name.length, c.length);
+        setCookie(cname,cvalue,14);
+        return cvalue;
       }
     }
     return "";

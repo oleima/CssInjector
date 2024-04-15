@@ -16,7 +16,7 @@
                 "https://*.goodapp.no/ubwprod/*"
             ],
             "js": [
-                "app.js"
+                "tab.js"
             ]
         }
     ],
