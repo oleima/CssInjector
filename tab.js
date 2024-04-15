@@ -7,11 +7,9 @@ function getColumnWidth(){
   let columnWidth = 150;
   if(cookiedValue !== ""){
     columnWidth = Number(cookiedValue)
-    console.log("found cookie with this width: " + columnWidth)
   }
   else{
     setCookie("columnWidth", columnWidth, 14)
-    console.log("did not find cookie, setting this width: " + columnWidth)
 
   }
   return columnWidth;
@@ -44,16 +42,12 @@ function setCookie(cname, cvalue, exdays) {
   }
 
   function recievedWidth(width) {
-    console.log("recieved width " + width)
     widthValue = width.split("=")[1];
     setCookie("columnWidth", widthValue, 14)
   }
 
   chrome.runtime.onMessage.addListener(
     function(request, sender, sendResponse) {
-      console.log(sender.tab ?
-                  "from a content script:" + sender.tab.url :
-                  "from the extension");
       if (request.greeting === "hello")
         sendResponse({farewell: "goodbye"});
       
