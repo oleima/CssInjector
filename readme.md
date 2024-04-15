@@ -15,7 +15,7 @@ By clicking on the extension next to the addressbar, you can manually adjust the
 To host this in your chromium browser clone the repo, or download and extract it as zip.
 Either way make sure you have the folder CssInjector with all its contents in a suitable path on your machine.
 
-Then enter your favorite browser and go to manage extensions. For chrome this looks like:
+Then enter the Chrome browser and go to manage extensions. This looks like:
 
 ![Click on the puzzle next to addressbar, and hit 'Manage extensions'](/images/chrome_manext.png)
 
@@ -34,7 +34,7 @@ Then you can start using the extension and it will automatically increase the ta
 To host this in your chromium browser clone the repo, or download and extract it as zip.
 Either way make sure you have the folder CssInjector with all its contents in a suitable path on your machine.
 
-Then enter your favorite browser and go to manage extensions. For chrome this looks like:
+Then enter theedge browser and go to manage extensions. This looks like:
 
 ![Click on the puzzle next to addressbar, and hit 'Manage extensions'](/images/edge_manext.png)
 
