@@ -64,7 +64,6 @@ function setCookie(cname, cvalue, exdays) {
 
 // Running every interval
 setInterval(function(){
-
   var loaded = false;
   var elementList = document.getElementsByClassName("x-component u4-iframecontainer x-box-item x-component-default");
 
