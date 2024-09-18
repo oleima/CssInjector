@@ -13,7 +13,7 @@
     "content_scripts": [
         {
             "matches": [
-                "https://*.goodapp.no/ubwprod/*"
+                "https://ubw.unit4cloud.com/no_gta_prod_web/*"
             ],
             "js": [
                 "tab.js"
