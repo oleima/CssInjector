@@ -79,8 +79,9 @@ setInterval(function(){
       if(tables.length>1){
         loaded = true;
         var table = tables[1];
-    
-        table.setAttribute("style", "border-width: 0px; border-collapse: separate; width: 1400px;"); 
+        columnWidth = getColumnWidth();
+        var tablewidth = columnWidth + 1200
+        table.setAttribute("style", "border-width: 0px; border-collapse: separate; width: " + tablewidth + "px;"); 
       
         var beskrivelser = frame.contentWindow.document.getElementsByClassName("GridCell");
       
@@ -90,7 +91,6 @@ setInterval(function(){
             beskrivelse = beskrivelser[i]
           }
         }
-        columnWidth = getColumnWidth();
         const columnStyle = "white-space:nowrap;text-align:center;vertical-align:middle;cursor:pointer;width:"+columnWidth+"px;"
         beskrivelse.setAttribute("style", columnStyle); 
       }
