@@ -4,7 +4,7 @@ let columnWidth = getColumnWidth();
 
 function getColumnWidth(){
   let cookiedValue = getCookie("columnWidth")
-  let columnWidth = 150;
+  let columnWidth = 300;
   if(cookiedValue !== ""){
     columnWidth = Number(cookiedValue)
   }
@@ -64,6 +64,59 @@ function setCookie(cname, cvalue, exdays) {
 
 // Running every interval
 setInterval(function(){
+    updateSetHours();
+    updateApproveHours();
+}, 200);
+
+
+function updateSetHours(){
+  var loaded = false;
+  var elementList = document.getElementsByClassName("x-component u4-iframecontainer x-box-item x-component-default");
+
+  if(elementList.length>0)
+  {
+    var childrenForDivContainingIframe = elementList[0].children
+    if(childrenForDivContainingIframe.length > 0)
+    {
+
+      var iframe = elementList[0].children[0];
+  
+      var frame = iframe.contentWindow.document.getElementById("contentContainerFrame");
+      if(frame)
+      {
+        var tables = frame.contentWindow.document.getElementsByClassName("Excel ColumnsMovable ColumnsResizable ColumnsAutoResizable");
+        if(tables!= null){
+          if(tables.length>1){
+            loaded = true;
+            var table = tables[1];
+            columnWidth = getColumnWidth();
+            var tablewidth = columnWidth + 1200
+            table.setAttribute("style", "border-width: 0px; border-collapse: separate; width: " + tablewidth + "px;"); 
+          
+            var beskrivelser = frame.contentWindow.document.getElementsByClassName("GridCell");
+          
+            var beskrivelse;
+            for (let i = 0; i < beskrivelser.length; i++) {
+              if(beskrivelser[i].id.startsWith("b_s89_g89s90_ctl02__headerdescription")){
+                beskrivelse = beskrivelser[i]
+              }
+            }
+            if(beskrivelse){
+              const columnStyle = "white-space:nowrap;text-align:center;vertical-align:middle;cursor:pointer;width:"+columnWidth+"px;"
+              beskrivelse.setAttribute("style", columnStyle); 
+            }
+          }
+          
+        }
+      }
+    }
+  }
+  if(!loaded){
+    console.log("Elements not loaded yet")
+  }
+}
+
+function updateApproveHours(){
   var loaded = false;
   var elementList = document.getElementsByClassName("x-component u4-iframecontainer x-box-item x-component-default");
 
@@ -74,30 +127,36 @@ setInterval(function(){
       var iframe = elementList[0].children[0];
   
       var frame = iframe.contentWindow.document.getElementById("contentContainerFrame");
-    
-      var tables = frame.contentWindow.document.getElementsByClassName("Excel ColumnsMovable ColumnsResizable ColumnsAutoResizable");
-      if(tables.length>1){
-        loaded = true;
-        var table = tables[1];
-        columnWidth = getColumnWidth();
-        var tablewidth = columnWidth + 1200
-        table.setAttribute("style", "border-width: 0px; border-collapse: separate; width: " + tablewidth + "px;"); 
+      if(frame)
+      {
+        var tables = frame.contentWindow.document.getElementsByClassName("Excel ColumnsMovable ColumnsResizable ColumnsAutoResizable");
       
-        var beskrivelser = frame.contentWindow.document.getElementsByClassName("GridCell");
+        if(tables!= null){
+          if(tables.length>1){
+            loaded = true;
+            var table = tables[1];
+            columnWidth = getColumnWidth();
+            var tablewidth = columnWidth + 1200
+            table.setAttribute("style", "border-width: 0px; border-collapse: separate; width: " + tablewidth + "px;"); 
       
-        var beskrivelse;
-        for (let i = 0; i < beskrivelser.length; i++) {
-          if(beskrivelser[i].id.startsWith("b_s89_g89s90_ctl02__headerdescription")){
-            beskrivelse = beskrivelser[i]
+            var beskrivelser = frame.contentWindow.document.getElementsByClassName("GridCell");
+      
+            var beskrivelse;
+            for (let i = 0; i < beskrivelser.length; i++) {
+              if(beskrivelser[i].id.startsWith("b_g1105s5_ctl02__headerdescription")){
+                beskrivelse = beskrivelser[i]
+              }
+            }
+            if(beskrivelse){
+              const columnStyle = "white-space:nowrap;text-align:center;vertical-align:middle;cursor:pointer;width:"+columnWidth+"px;"
+              beskrivelse.setAttribute("style", columnStyle); 
+            }
           }
         }
-        const columnStyle = "white-space:nowrap;text-align:center;vertical-align:middle;cursor:pointer;width:"+columnWidth+"px;"
-        beskrivelse.setAttribute("style", columnStyle); 
       }
     }
   }
   if(!loaded){
     console.log("Elements not loaded yet")
   }
-
-}, 1000);
+}

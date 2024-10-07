@@ -1,5 +1,5 @@
 const site = window.location.hostname;
-let columnWidth = 100;
+let columnWidth = 300;
 getColumnWidth();
 
 var slider = document.getElementById("myRange");
