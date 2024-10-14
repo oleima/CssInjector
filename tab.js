@@ -130,11 +130,12 @@ function updateApproveHours(){
       if(frame)
       {
         var tables = frame.contentWindow.document.getElementsByClassName("Excel ColumnsMovable ColumnsResizable ColumnsAutoResizable");
-      
+        
         if(tables!= null){
-          if(tables.length>1){
+          if(tables.length>0){
             loaded = true;
-            var table = tables[1];
+            var table = tables[0];
+            if(tables.length>1){table = tables[1]}
             columnWidth = getColumnWidth();
             var tablewidth = columnWidth + 1200
             table.setAttribute("style", "border-width: 0px; border-collapse: separate; width: " + tablewidth + "px;"); 
