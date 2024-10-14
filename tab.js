@@ -120,11 +120,11 @@ function updateApproveHours(){
   var loaded = false;
   var elementList = document.getElementsByClassName("x-component u4-iframecontainer x-box-item x-component-default");
 
-  if(elementList.length>0){
-    var childrenForDivContainingIframe = elementList[0].children
+  if(elementList.length>1){
+    var childrenForDivContainingIframe = elementList[1].children
     if(childrenForDivContainingIframe.length > 0){
 
-      var iframe = elementList[0].children[0];
+      var iframe = elementList[1].children[0];
   
       var frame = iframe.contentWindow.document.getElementById("contentContainerFrame");
       if(frame)
